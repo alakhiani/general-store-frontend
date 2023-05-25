@@ -1,63 +1,48 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import styles from '../styles/Home.module.css';
+import type { NextPage, GetStaticProps } from 'next';
+import { Button } from '@mui/material';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
-import Counter from '../features/counter/Counter'
-import styles from '../styles/Home.module.css'
+interface IndexPageProps {
+  name: string;
+  summary: string;
+}
 
-const IndexPage: NextPage = () => {
+const IndexPage: NextPage<IndexPageProps> = ({ name, summary }) => {
+  const router = useRouter();
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Redux Toolkit</title>
+        <title>General Store</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className={styles.header}>
-        <img src="/logo.svg" className={styles.logo} alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className={styles.link}
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+      <section className={styles.Home}>
+        <h1 className={styles.Name}>{name}</h1>
+        <div className={styles.Summary}>{summary}</div>
+        <div>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => router.push("/catalog")}
           >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className={styles.link}
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className={styles.link}
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className={styles.link}
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+            Catalog
+          </Button>
+        </div>
+      </section>
     </div>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
+
+export const getStaticProps: GetStaticProps<IndexPageProps> = async () => {
+  return {
+    props: {
+      name: 'General Store',
+      summary:
+        "Capstone is your ultimate destination for a wide variety of shopping needs. As a general store, we offer an extensive range of products spanning diverse categories such as fashion, electronics, home decor, and more. At Capstone, we prioritize quality and customer satisfaction, curating a selection of top brands and unique finds to ensure you discover the perfect items to elevate your lifestyle. With a seamless shopping experience, secure transactions, and dedicated customer support, Capstone is committed to making your shopping journey enjoyable and fulfilling.",
+    },
+  };
+};
