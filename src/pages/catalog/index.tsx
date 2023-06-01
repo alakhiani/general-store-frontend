@@ -11,7 +11,7 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
     return (
         <section>
             <PageDescription
-                title="Products"
+                title="Catalog"
                 description="Our general store has the following product offerings..."
             />
             {products?.map((product) => (

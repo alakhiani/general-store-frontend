@@ -1,12 +1,15 @@
-import { Product } from "@/interfaces/product";
+import { IProduct } from "@/interfaces/product";
 import { Grid, Stack } from "@mui/material";
 import Image from "next/image";
+import ItemActions from "./ItemActions";
 
 export interface ProductItemProps {
-    product: Product
+    product: IProduct,
+    handleEdit?: () => void,
+    handleDelete?: () => void
 }
 
-const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
+const ProductItem: React.FC<ProductItemProps> = ({ product, handleEdit, handleDelete }) => {
     return (
         <Grid container spacing={6} sx={{ pt: "25px", pb: "25px" }}>
             <Grid item md={6}>
@@ -22,11 +25,11 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
                 <Stack spacing={4}>
                     <h3>{product.name}</h3>
                     <div>{product.description}</div>
-                    {/* <ItemActions
+                    <ItemActions
                         id={product._id}
                         onDelete={handleDelete}
                         onEdit={handleEdit}
-                    /> */}
+                    />
                 </Stack>
             </Grid>
         </Grid>
