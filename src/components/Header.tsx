@@ -2,6 +2,7 @@ import { Button, Avatar, Box } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '@/components/contexts/CartContext';
+import { useRouter } from 'next/router';
 
 interface HeaderProps {
     title: string;
@@ -10,6 +11,7 @@ interface HeaderProps {
 
 export default function Header({ title, children }: HeaderProps): JSX.Element {
 
+    const router = useRouter();
     const cartContext = useContext(CartContext);
     const [cartItemCount, setCartItemCount] = useState(0);
 
@@ -30,6 +32,9 @@ export default function Header({ title, children }: HeaderProps): JSX.Element {
                 sx={{
                     color: "black",
                     fontSize: "1.1rem",
+                }}
+                onClick={() => {
+                    router.push('/checkout');
                 }}
             >
                 {`${title} (${cartItemCount})`}

@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { CartContextProvider } from '../components/contexts/CartContext';
-import Layout from '../components/Layout';
+import Navigation from '../components/Navigation';
 
 const theme = createTheme();
 
@@ -11,9 +11,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <CartContextProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline>
-          <Layout>
+          <Navigation>
             <Component {...pageProps} />
-          </Layout>
+          </Navigation>
         </CssBaseline>
       </ThemeProvider>
     </CartContextProvider>

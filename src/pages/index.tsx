@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async () => {
     props: {
       name: 'General Store',
       summary:
-        "Capstone is your ultimate destination for a wide variety of shopping needs. As a general store, we offer an extensive range of products spanning diverse categories such as fashion, electronics, home decor, and more. At Capstone, we prioritize quality and customer satisfaction, curating a selection of top brands and unique finds to ensure you discover the perfect items to elevate your lifestyle. With a seamless shopping experience, secure transactions, and dedicated customer support, Capstone is committed to making your shopping journey enjoyable and fulfilling.",
+        "Capstone is your ultimate destination for a wide variety of shopping needs. As a general store, we offer an extensive range of products spanning diverse categories such as stationary, art supplies, tools, and more. At Capstone, we prioritize quality and customer satisfaction, curating a selection of top brands and unique finds to ensure you discover the perfect items to elevate your lifestyle. With a seamless shopping experience, secure transactions, and dedicated customer support, Capstone is committed to making your shopping journey enjoyable and fulfilling.",
     },
   };
 };

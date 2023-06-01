@@ -4,13 +4,14 @@ import Image from "next/image";
 import ItemActions from "./ItemActions";
 
 export interface ProductItemProps {
-    product: IProduct,
-    handleEdit?: () => void,
-    handleDelete?: () => void,
-    handleAddToCart?: () => void
+    product: IProduct;
+    handleEdit?: () => void;
+    handleDelete?: () => void;
+    handleAddToCart?: () => void;
+    handleRemoveFromCart?: () => void;
 }
 
-const ProductItem: React.FC<ProductItemProps> = ({ product, handleEdit, handleDelete, handleAddToCart }) => {
+const ProductItem: React.FC<ProductItemProps> = ({ product, handleEdit, handleDelete, handleAddToCart, handleRemoveFromCart }) => {
     return (
         <Grid container spacing={6} sx={{ pt: "25px", pb: "25px" }}>
             <Grid item md={6}>
@@ -31,6 +32,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, handleEdit, handleDe
                         onDelete={handleDelete}
                         onEdit={handleEdit}
                         onAddToCart={handleAddToCart}
+                        onRemoveFromCart={handleRemoveFromCart}
                     />
                 </Stack>
             </Grid>

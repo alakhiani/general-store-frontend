@@ -1,7 +1,7 @@
 import { getProducts } from '@/api/productApi';
 import PageDescription from '@/components/PageDescription';
 import ProductItem, { ProductItemProps } from '@/components/ProductItem';
-import { CartContext, CartContextValue } from '@/components/contexts/CartContext';
+import { CartContext } from '@/components/contexts/CartContext';
 import { IProduct } from '@/interfaces/product';
 import React, { useContext } from 'react';
 import Head from 'next/head';
@@ -28,13 +28,15 @@ const Catalog: React.FC<CatalogProps> = ({ products }) => {
                     title="Catalog"
                     description="Our general store has the following product offerings..."
                 />
-                {products?.map((product) => (
-                    <ProductItem
-                        key={product._id}
-                        product={product}
-                        handleAddToCart={() => handleAddToCart(product)}
-                    />
-                ))}
+                {
+                    products?.map((product) => (
+                        <ProductItem
+                            key={product._id}
+                            product={product}
+                            handleAddToCart={() => handleAddToCart(product)}
+                        />
+                    ))
+                }
             </section>
         </>
     );

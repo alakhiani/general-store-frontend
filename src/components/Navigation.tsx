@@ -4,11 +4,11 @@ import Link from 'next/link';
 import Header from './Header';
 import Footer from './Footer';
 
-interface LayoutProps {
+interface NavigationProps {
     children: ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Navigation: React.FC<NavigationProps> = ({ children }) => {
     return (
         <>
             <Header title="Cart">
@@ -24,4 +24,4 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     );
 };
 
-export default Layout;
+export default Navigation;

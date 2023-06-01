@@ -6,9 +6,10 @@ interface ItemActionsProps {
     onEdit?: () => void;
     onDelete?: () => void;
     onAddToCart?: () => void;
+    onRemoveFromCart?: () => void;
 }
 
-const ItemActions: React.FC<ItemActionsProps> = ({ id, onEdit, onDelete, onAddToCart }) => {
+const ItemActions: React.FC<ItemActionsProps> = ({ id, onEdit, onDelete, onAddToCart, onRemoveFromCart }) => {
 
     return (
         <>
@@ -33,16 +34,29 @@ const ItemActions: React.FC<ItemActionsProps> = ({ id, onEdit, onDelete, onAddTo
                         </Button>
                     </>
                 ) : (
-                    <>
-                        <Button
-                            variant="contained"
-                            size="large"
-                            color="primary"
-                            onClick={onAddToCart}
-                        >
-                            Add to Cart
-                        </Button>
-                    </>
+                    !!onAddToCart ? (
+                        <>
+                            <Button
+                                variant="contained"
+                                size="large"
+                                color="primary"
+                                onClick={onAddToCart}
+                            >
+                                Add to Cart
+                            </Button>
+                        </>
+                    ) : (
+                        <>
+                            <Button
+                                variant="contained"
+                                size="large"
+                                color="primary"
+                                onClick={onRemoveFromCart}
+                            >
+                                Remove from Cart
+                            </Button>
+                        </>
+                    )
                 )
             }
         </>
