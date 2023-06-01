@@ -15,7 +15,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ name, summary }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>General Store</title>
+        <title>Capstone General Store</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.Home}>

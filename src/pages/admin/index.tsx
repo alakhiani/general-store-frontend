@@ -6,6 +6,7 @@ import EditProductModal from "@/components/modals/EditProductModal";
 import { IProduct } from "@/interfaces/product";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 
 export default function Admin() {
     const [editProduct, setEditProduct] = useState<IProduct | null>(null);
@@ -52,39 +53,44 @@ export default function Admin() {
     };
 
     return (
-        <section>
-            <PageDescription
-                title="Admin"
-                description="Here you create new products and edit product details in the catalog..."
-            />
-            <div style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px' }}>
-                <Button
-                    variant="contained"
-                    size="large"
-                    onClick={() => setIsNewProductModalVisible(true)}
-                >
-                    Add New Product
-                </Button>
-            </div>
-            {products.map((product) => (
-                <ProductItem
-                    key={product._id}
-                    product={product}
-                    handleDelete={() => handleDelete(product)}
-                    handleEdit={() => setEditProduct(product)}
+        <>
+            <Head>
+                <title>Admin</title>
+            </Head>
+            <section>
+                <PageDescription
+                    title="Admin"
+                    description="Here you create new products and edit product details in the catalog..."
                 />
-            ))}
-            <AddNewProductModal
-                open={isNewProductModalVisible}
-                onClose={() => setIsNewProductModalVisible(false)}
-                onSubmit={handleOnSubmit}
-            />
-            <EditProductModal
-                open={!!editProduct}
-                onClose={() => setEditProduct(null)}
-                onSubmit={handleOnSubmit}
-                product={editProduct}
-            />
-        </section>
+                <div style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px' }}>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        onClick={() => setIsNewProductModalVisible(true)}
+                    >
+                        Add New Product
+                    </Button>
+                </div>
+                {products.map((product) => (
+                    <ProductItem
+                        key={product._id}
+                        product={product}
+                        handleDelete={() => handleDelete(product)}
+                        handleEdit={() => setEditProduct(product)}
+                    />
+                ))}
+                <AddNewProductModal
+                    open={isNewProductModalVisible}
+                    onClose={() => setIsNewProductModalVisible(false)}
+                    onSubmit={handleOnSubmit}
+                />
+                <EditProductModal
+                    open={!!editProduct}
+                    onClose={() => setEditProduct(null)}
+                    onSubmit={handleOnSubmit}
+                    product={editProduct}
+                />
+            </section>
+        </>
     );
 }

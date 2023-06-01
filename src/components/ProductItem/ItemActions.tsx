@@ -1,16 +1,14 @@
 import { Button } from "@mui/material";
-import { useRouter } from "next/router";
 import React from "react";
 
 interface ItemActionsProps {
     id: string;
     onEdit?: () => void;
     onDelete?: () => void;
+    onAddToCart?: () => void;
 }
 
-const ItemActions: React.FC<ItemActionsProps> = ({ id, onEdit, onDelete }) => {
-
-    const router = useRouter();
+const ItemActions: React.FC<ItemActionsProps> = ({ id, onEdit, onDelete, onAddToCart }) => {
 
     return (
         <>
@@ -40,7 +38,7 @@ const ItemActions: React.FC<ItemActionsProps> = ({ id, onEdit, onDelete }) => {
                             variant="contained"
                             size="large"
                             color="primary"
-                            onClick={() => router.push(`/product/${id}`)}
+                            onClick={onAddToCart}
                         >
                             Add to Cart
                         </Button>

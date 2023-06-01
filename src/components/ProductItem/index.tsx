@@ -6,10 +6,11 @@ import ItemActions from "./ItemActions";
 export interface ProductItemProps {
     product: IProduct,
     handleEdit?: () => void,
-    handleDelete?: () => void
+    handleDelete?: () => void,
+    handleAddToCart?: () => void
 }
 
-const ProductItem: React.FC<ProductItemProps> = ({ product, handleEdit, handleDelete }) => {
+const ProductItem: React.FC<ProductItemProps> = ({ product, handleEdit, handleDelete, handleAddToCart }) => {
     return (
         <Grid container spacing={6} sx={{ pt: "25px", pb: "25px" }}>
             <Grid item md={6}>
@@ -29,6 +30,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, handleEdit, handleDe
                         id={product._id}
                         onDelete={handleDelete}
                         onEdit={handleEdit}
+                        onAddToCart={handleAddToCart}
                     />
                 </Stack>
             </Grid>

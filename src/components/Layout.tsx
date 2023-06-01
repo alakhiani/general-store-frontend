@@ -11,7 +11,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <>
-            <Header title="Capstone General Store">
+            <Header title="Cart">
                 <Link href="/">Home</Link>
                 <Link href="/catalog">Catalog</Link>
                 <Link href="/admin">Admin</Link>

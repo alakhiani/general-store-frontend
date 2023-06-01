@@ -1,21 +1,21 @@
-import '../styles/globals.css'
-// import { Provider } from 'react-redux'
-import type { AppProps } from 'next/app'
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material'
-import store from '../store'
-import Layout from '../components/Layout'
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { CartContextProvider } from '../components/contexts/CartContext';
+import Layout from '../components/Layout';
 
 const theme = createTheme();
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    // <Provider store={store}> // Disable redux for now
+    <CartContextProvider>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <CssBaseline>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </CssBaseline>
       </ThemeProvider>
-    // </Provider>
-  )
+    </CartContextProvider>
+  );
 }
