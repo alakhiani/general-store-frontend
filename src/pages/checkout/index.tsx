@@ -1,20 +1,20 @@
 import PageDescription from "@/components/PageDescription";
 import ProductItem from "@/components/ProductItem";
-import { CartContext, CartItem } from "@/components/contexts/CartContext";
+import { CartContext } from "@/components/contexts/CartContext";
 import { IProduct } from "@/interfaces/product";
 import { useContext } from "react";
 import Head from 'next/head';
 import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
+import { ICartItem } from "@/interfaces/cartItem";
 
 const Checkout: React.FC = () => {
     const router = useRouter();
     const cartContext = useContext(CartContext);
     const cartHasItems = cartContext && cartContext.cart.length > 0;
-    const { cart } = cartContext || { cart: [] };
-    const { cartSize, cartValue } = cart.reduce(
-        (accumulator: { cartSize: number; cartValue: number }, item: CartItem) => {
+    const { cartSize, cartValue } = cartContext?.cart.reduce(
+        (accumulator: { cartSize: number; cartValue: number }, item: ICartItem) => {
             const { cartSize, cartValue } = accumulator;
             const itemPrice = item.price * item.quantity;
             return {
@@ -23,7 +23,7 @@ const Checkout: React.FC = () => {
             };
         },
         { cartSize: 0, cartValue: 0 }
-    );
+    ) || { cartSize: 0, cartValue: 0 };
 
     return (
         <>

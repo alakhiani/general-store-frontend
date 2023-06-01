@@ -3,7 +3,8 @@ import Image from "next/image";
 import ItemActions from "./ItemActions";
 import { IProduct } from "@/interfaces/product";
 import { useContext } from "react";
-import { CartContext, CartItem } from "@/components/contexts/CartContext";
+import { CartContext } from "@/components/contexts/CartContext";
+import { ICartItem } from "@/interfaces/cartItem";
 
 export interface ProductItemProps {
     product: IProduct;
@@ -51,7 +52,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
                         typeof product === "object" &&
                         "quantity" in product &&
                         cartContext && (
-                            <div>Quantity: {(product as CartItem).quantity}</div>
+                            <div>Quantity: {(product as ICartItem).quantity}</div>
                         )}
                     <ItemActions
                         id={product._id}
