@@ -1,38 +1,3 @@
-// import { getProducts } from '@/api/productApi';
-// import PageDescription from '@/components/PageDescription';
-// import ProductItem, { ProductItemProps } from '@/components/ProductItem';
-// import React from 'react';
-
-// interface AdminProps {
-//     products?: ProductItemProps['product'][] | null;
-// }
-
-// const Admin: React.FC<AdminProps> = ({ products }) => {
-//     return (
-//         <section>
-//             <PageDescription
-//                 title="Catalog Admin"
-//                 description="Here you can edit product details in the catalog..."
-//             />
-//             {products?.map((product) => (
-//                 <ProductItem key={product._id} product={product} />
-//             ))}
-//         </section>
-//     );
-// };
-
-// export async function getServerSideProps() {
-//     const products = await getProducts();
-//     return {
-//         props: {
-//             products,
-//         },
-//     }
-// }
-
-// export default Admin;
-
-
 import { getProducts, updateProduct, deleteProduct, createProduct } from "@/api/productApi";
 import PageDescription from "@/components/PageDescription";
 import ProductItem from "@/components/ProductItem";
@@ -92,7 +57,7 @@ export default function Admin() {
                 title="Admin"
                 description="Here you create new products and edit product details in the catalog..."
             />
-            <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <div style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px' }}>
                 <Button
                     variant="contained"
                     size="large"

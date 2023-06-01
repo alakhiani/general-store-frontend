@@ -23,7 +23,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, handleEdit, handleDe
             </Grid>
             <Grid item md={6}>
                 <Stack spacing={4}>
-                    <h3>{product.name}</h3>
+                    <h3>{product.name} ${product.price.toFixed(2)}</h3>
                     <div>{product.description}</div>
                     <ItemActions
                         id={product._id}
