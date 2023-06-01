@@ -10,14 +10,17 @@ interface HeaderProps {
 }
 
 export default function Header({ title, children }: HeaderProps): JSX.Element {
-
     const router = useRouter();
     const cartContext = useContext(CartContext);
     const [cartItemCount, setCartItemCount] = useState(0);
 
     useEffect(() => {
         if (cartContext) {
-            setCartItemCount(cartContext.cart.length);
+            const itemCount = cartContext.cart.reduce(
+                (total, item) => total + item.quantity,
+                0
+            );
+            setCartItemCount(itemCount);
         }
     }, [cartContext]);
 
@@ -30,8 +33,8 @@ export default function Header({ title, children }: HeaderProps): JSX.Element {
                     </Avatar>
                 }
                 sx={{
-                    color: "black",
-                    fontSize: "1.1rem",
+                    color: 'black',
+                    fontSize: '1.1rem',
                 }}
                 onClick={() => {
                     router.push('/checkout');
@@ -41,10 +44,10 @@ export default function Header({ title, children }: HeaderProps): JSX.Element {
             </Button>
             <Box
                 sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "flex-end",
-                    alignItems: "center",
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-end',
+                    alignItems: 'center',
                 }}
             >
                 {children}

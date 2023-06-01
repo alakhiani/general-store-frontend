@@ -5,6 +5,7 @@ import { CartContext } from '@/components/contexts/CartContext';
 import { IProduct } from '@/interfaces/product';
 import React, { useContext } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 interface CatalogProps {
     products?: ProductItemProps['product'][] | null;
