@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import Head from "next/head";
 
-export default function Admin() {
+const Admin: React.FC = () => {
     const [editProduct, setEditProduct] = useState<IProduct | null>(null);
     const [isNewProductModalVisible, setIsNewProductModalVisible] = useState(false);
     const [products, setProducts] = useState<IProduct[]>([]);
@@ -94,3 +94,5 @@ export default function Admin() {
         </>
     );
 }
+
+export default Admin;
