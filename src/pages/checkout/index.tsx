@@ -11,6 +11,7 @@ import { ICartItem } from "@/interfaces/cartItem";
 import PlaceOrderModal from "@/components/modals/PlaceOrderModal";
 import { IOrder } from "@/interfaces/order";
 import { createOrder } from "@/api/orderApi";
+import { Label } from "@mui/icons-material";
 
 const Checkout: React.FC = () => {
     const router = useRouter();
@@ -88,6 +89,9 @@ const Checkout: React.FC = () => {
                             >
                                 Complete Checkout (${cartValue.toFixed(2)})
                             </Button>
+                        </Grid>
+                        <Grid item md={3} sx={{ textAlign: "right" }} >
+                            <div style={{ fontWeight: "bold" }}>Order Total: ${cartValue.toFixed(2)}</div>
                         </Grid>
                     </Grid>
                 ) : (
