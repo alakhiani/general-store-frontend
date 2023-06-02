@@ -27,7 +27,9 @@ const Admin: React.FC = () => {
     };
 
     const handleOnSubmit = async (product: IProduct) => {
-        const copyOfProducts = [...products];
+        // UseState does initialize the array but for some reason in the cypress
+        // e2e test it doesn't work, but this approach does.
+        const copyOfProducts = products ? [...products] : [];
         if (!!product._id) {
             // Edit the product
             const updatedProduct = await updateProduct(product);
@@ -71,14 +73,16 @@ const Admin: React.FC = () => {
                         Add New Product
                     </Button>
                 </div>
-                {products.map((product) => (
-                    <ProductItem
-                        key={product._id}
-                        product={product}
-                        handleDelete={() => handleDelete(product)}
-                        handleEdit={() => setEditProduct(product)}
-                    />
-                ))}
+                {
+                    products && products.map((product) => (
+                        <ProductItem
+                            key={product._id}
+                            product={product}
+                            handleDelete={() => handleDelete(product)}
+                            handleEdit={() => setEditProduct(product)}
+                        />
+                    ))
+                }
                 <AddNewProductModal
                     open={isNewProductModalVisible}
                     onClose={() => setIsNewProductModalVisible(false)}
