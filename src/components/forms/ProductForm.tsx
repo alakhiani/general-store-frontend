@@ -1,8 +1,7 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Chip, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { IProduct } from "@/interfaces/product";
 
